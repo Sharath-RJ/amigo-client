@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    // Other options...
+    "esModuleInterop": true,
+     "outDir": "build", // Specify the output directory for transpiled JavaScript files
+   // "rootDir": "./src", // Specify the root directory containing TypeScript files
+    "module": "commonjs", // Set the module system to CommonJS if needed
+    // Add any other compiler options you need
+  },
+  "exclude": ["node_modules"],
+  "include": ["src"]
+}
+
