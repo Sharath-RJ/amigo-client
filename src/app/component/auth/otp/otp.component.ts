@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../../../../environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-otp',
@@ -12,8 +13,9 @@ export class OtpComponent {
   otp: string[] = ['', '', '', ''];
   phoneNumber = '';
 
-  constructor(private _http: HttpClient, private _router: Router) {
+  constructor(private _http: HttpClient, private _router: Router, private _snakbar: MatSnackBar) {
     this.phoneNumber = history.state.phoneNumber;
+  
   }
 
   // Setter method for otpString
@@ -43,7 +45,12 @@ export class OtpComponent {
       .subscribe(
         (data:any) => {
           if(data.error){
-            alert(data.error)
+            this._snakbar.open(data.error, 'Close', {
+              duration: 3000,
+              panelClass: ['snackbar-error'],
+              verticalPosition: 'top',
+              horizontalPosition:'center'
+            })
             return
           }
           this._router.navigate(['/']);
