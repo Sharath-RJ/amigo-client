@@ -8,7 +8,7 @@
         </mat-form-field>
         <div class="image-gallery flex space-x-4">
         <div *ngFor="let image of data.image; trackBy: trackByImageId" class="image-item">
-            <img [src]="'https://furnishnest.online/uploads/' + image" alt="Post Image"
+            <img [src]="image"  alt="Post Image"
                 class="w-40 h-40 object-cover rounded-md border border-gray-300">
             <button mat-icon-button (click)="deleteImage(extractImageId(image))">
                 <mat-icon>delete</mat-icon>
