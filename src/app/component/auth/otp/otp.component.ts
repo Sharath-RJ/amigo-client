@@ -41,13 +41,16 @@ export class OtpComponent {
         otp: this.otpString,
       })
       .subscribe(
-        (data) => {
-           this._router.navigate(['/']);
+        (data:any) => {
+          if(data.error){
+            alert(data.error)
+            return
+          }
+          this._router.navigate(['/']);
           console.log(data);
           console.log('Successfully Verified');
         },
         (error) => {
-          alert("Invalid OTP");
           console.error('OTP verification error', error);
         }
       );
