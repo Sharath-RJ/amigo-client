@@ -25,21 +25,21 @@
                     class="w-full px-4 py-2 bg-transparent border border-gray-300 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600">
             </div>
 
-            <div class="mb-4">
-                <label for="role">Role:</label>
-                <select id="role" [(ngModel)]="role" name="role"  class="w-full px-4 py-2 bg-transparent border border-gray-300 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600">
-                    <option value="User">User</option>
-                    <option value="Trainer">Trainer</option>
-                    <option value="Admin">Admin</option>
-                </select>
-                   
-            </div>
+    <div class="mb-4">
+        <label for="role" class="text-white">Role:</label>
+        <select id="role" [(ngModel)]="role" name="role"
+            class="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600">
+            <option value="User" class="bg-gray-800">User</option>
+            <option value="Trainer" class="bg-gray-800">Trainer</option>
+        </select>
+    </div>
+
+
            
             <div class="mb-6">
             <div id="google-btn"></div>
             </div>
-            <button type="submit"
-                class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition duration-300">Register</button>
+            <button type="submit"  class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition duration-300">Register</button>
             <div class="text-center text-white mt-4">
                 <p>Already have an account? <a [routerLink]="['/login']"
                         class="font-semibold text-blue-400 hover:underline">Login</a></p>
