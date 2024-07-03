@@ -47,6 +47,7 @@ export class OtpComponent {
           console.log('Successfully Verified');
         },
         (error) => {
+          alert("Invalid OTP");
           console.error('OTP verification error', error);
         }
       );
