@@ -10,17 +10,26 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./otp.component.css'],
 })
 export class OtpComponent implements OnInit {
-
   otp: string[] = ['', '', '', ''];
   phoneNumber = '';
-  timerStarted!:boolean;
+  email = '';
+  timerStarted!: boolean;
+  resend: boolean = false;
 
-  constructor(private _http: HttpClient, private _router: Router, private _snakbar: MatSnackBar) {
+  constructor(
+    private _http: HttpClient,
+    private _router: Router,
+    private _snakbar: MatSnackBar
+  ) {
     this.phoneNumber = history.state.phoneNumber;
-  
+    this.email = history.state.email;
   }
   ngOnInit(): void {
     this.timerStarted = true;
+  }
+
+  resendOtp(){
+    alert(this.email)
   }
 
   // Setter method for otpString
@@ -48,15 +57,15 @@ export class OtpComponent implements OnInit {
         otp: this.otpString,
       })
       .subscribe(
-        (data:any) => {
-          if(data.error){
+        (data: any) => {
+          if (data.error) {
             this._snakbar.open(data.error, 'Close', {
               duration: 3000,
               panelClass: ['snackbar-error'],
               verticalPosition: 'top',
-              horizontalPosition:'center'
-            })
-            return
+              horizontalPosition: 'center',
+            });
+            return;
           }
           this._router.navigate(['/']);
           console.log(data);
@@ -66,6 +75,11 @@ export class OtpComponent implements OnInit {
           console.error('OTP verification error', error);
         }
       );
+  }
+
+  handleTimerFinished() {
+    console.log('Timer finished!');
+    this.resend = true;
   }
 }
 

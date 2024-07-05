@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-timer',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './timer.component.css',
 })
 export class TimerComponent implements OnInit {
+  @Output() timerFinished: EventEmitter<void> = new EventEmitter<void>();
   timeLeft: number = 180; // 3 minutes in seconds
   interval: any;
 
@@ -24,6 +25,7 @@ export class TimerComponent implements OnInit {
         clearInterval(this.interval);
         // Optionally, add logic for when the timer ends
         console.log('Timer ended!');
+        this.timerFinished.emit();
       }
     }, 1000); // Update every second (1000 milliseconds)
   }
