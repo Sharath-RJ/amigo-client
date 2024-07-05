@@ -11,6 +11,7 @@ import { environment } from '../../../../environment';
 })
 export class PostComponent implements OnInit {
   activeCommentPostId: string | null = null;
+  activeCommentBoxPostId: string | null = null;
   activeLikePostId: string | null = null;
   showcomments: boolean = false;
   showLikes: boolean = false;
@@ -70,10 +71,10 @@ export class PostComponent implements OnInit {
   }
 
   showAddComment(postId: string) {
-    if (this.activeCommentPostId === postId) {
-      this.activeCommentPostId = null; // Toggle off if clicked again
+    if (this.activeCommentBoxPostId === postId) {
+      this.activeCommentBoxPostId = null; // Toggle off if clicked again
     } else {
-      this.activeCommentPostId = postId;
+      this.activeCommentBoxPostId = postId;
       this.activeLikePostId = null; // Deactivate likes when comments are activated
     }
   }
@@ -127,6 +128,7 @@ export class PostComponent implements OnInit {
   }
 
   handleCommentsAdded(comment: any) {
+    console.log("Comment inside the handler fun post componet", comment)
     this.activeCommentPostId = ' ';
 
     const postIndex = this.posts.findIndex(

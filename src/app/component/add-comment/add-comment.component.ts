@@ -16,7 +16,6 @@ export class AddCommentComponent {
  
   addingComment() {
     console.log("adding comment")
-    const loggedInUserId = sessionStorage.getItem('loginedInUser');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${sessionStorage.getItem('token')}`,
     });
@@ -32,6 +31,7 @@ export class AddCommentComponent {
       .subscribe(
         (data) => {
         this.comment = ' ';
+        console.log("this is the comment", data)
         this.commentsAdded.emit(data);
         //notify commentation
         },
