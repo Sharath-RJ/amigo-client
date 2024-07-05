@@ -23,6 +23,10 @@
                 <p>Didn't receive the OTP? <a href="#" class="text-blue-400 hover:underline">Resend OTP</a></p>
             </div>
         </form>
+
+        <div *ngIf="timerStarted">
+            <app-timer></app-timer>
+        </div>
     </div>
 </div>
 

@@ -9,13 +9,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './otp.component.html',
   styleUrls: ['./otp.component.css'],
 })
-export class OtpComponent {
+export class OtpComponent implements OnInit {
+
   otp: string[] = ['', '', '', ''];
   phoneNumber = '';
+  timerStarted!:boolean;
 
   constructor(private _http: HttpClient, private _router: Router, private _snakbar: MatSnackBar) {
     this.phoneNumber = history.state.phoneNumber;
   
+  }
+  ngOnInit(): void {
+    this.timerStarted = true;
   }
 
   // Setter method for otpString

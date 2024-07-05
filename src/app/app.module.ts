@@ -68,6 +68,7 @@ import { MyAppointmentsComponent } from './component/my-appointments/my-appointm
 import { ChartModule } from 'angular-highcharts'; 
 import { AuthInterceptor } from './auth.interceptor';
 import { FluencyTestComponent } from './component/modal/fluency-test/fluency-test.component';
+import { TimerComponent } from './component/timer/timer.component';
 
 @NgModule({
   declarations: [
@@ -118,6 +119,7 @@ import { FluencyTestComponent } from './component/modal/fluency-test/fluency-tes
     ProgressComponent,
     MyAppointmentsComponent,
     FluencyTestComponent,
+    TimerComponent,
   ],
   imports: [
     BrowserModule,
