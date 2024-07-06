@@ -3,6 +3,7 @@
 import { Injectable } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
 import { environment } from '../../../environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ export class SocketService {
   private socket: Socket;
 
   constructor() {
-    this.socket = io('https://furnishnest.online'); 
+    this.socket = io('https://furnishnest.online');
     this.socket.on('connect', () => {
       console.log('Socket connected:', this.socket.id);
     });
@@ -32,9 +33,15 @@ export class SocketService {
 
   onNewMessage(callback: (message: any) => void): void {
     this.socket.on('newMessage', callback);
-    
   }
-    
+
+  public onNotificationCountUpdate(): Observable<number> {
+    return new Observable<number>((observer) => {
+      this.socket.on('notificationCountUpdate', (count: number) => {
+        observer.next(count);
+      });
+    });
+  }
 
   disconnect(): void {
     this.socket.disconnect();

@@ -21,6 +21,7 @@ export class NotificationComponent implements OnInit {
   ngOnInit(): void {
     this._http.get<any[]>(`${environment.apiUrl}/notification/getAllNotifications`).subscribe(
       (data) => {
+        
         this.notifications = data;
       },
       (error) => {
