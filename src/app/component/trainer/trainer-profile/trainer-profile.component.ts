@@ -99,6 +99,7 @@ export class TrainerProfileComponent implements OnInit {
      if (!this.selectedSlot) {
        return;
      }
+     alert(this.selectedSlot)
      if (this.isBooked(this.selectedSlot)) {
          this._snackBar.open('This slot is already booked.', '', {
            duration: 3000,
