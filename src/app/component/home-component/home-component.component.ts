@@ -25,8 +25,9 @@ export class HomeComponentComponent implements OnInit  {
     if (ProfilePic) this.picture = JSON.parse(ProfilePic).profilePic;
 
   this.notificationCountSubscription = this._socketService.onNotificationCountUpdate().subscribe(count => {
+      console.log("notification count",count);
       this.notificationCount = count;
-    });
+  });
 
   }
 
