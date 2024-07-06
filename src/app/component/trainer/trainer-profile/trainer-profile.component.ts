@@ -105,7 +105,11 @@ export class TrainerProfileComponent implements OnInit {
        console.log("aaa",this.checkBoooking);
          const slotUnAvailable = this.checkBoooking.find((slot:any) => slot._id === this.selectedSlot._id).status=='booked';
         if(slotUnAvailable){
-          alert("Slot Booked already")
+          this._snackBar.open('Appointment Already Booked', '', {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          });
           return
         }
      }, (err)=>{
