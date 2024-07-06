@@ -110,32 +110,28 @@ export class TrainerProfileComponent implements OnInit {
             horizontalPosition: 'center',
             verticalPosition: 'top',
           });
-          return
+        
         }else{
-           var handler = (<any>window).StripeCheckout.configure({
-             key: 'pk_test_51PWGZxRt3sCPNpRIJRxThlLsHAEuCknUkirKbupCKCRhmuJSMB4xoPO9raiK6YVyQ0Lg1UPF3sWELcYeDDvDry6X00iLFOfiV0',
-             locale: 'auto',
-             token: (token: any) => {
-               console.log('Token:', token);
-               console.log(this.selectedSlot);
-               this.bookNow();
-             },
-           });
+            var handler = (<any>window).StripeCheckout.configure({
+              key: 'pk_test_51PWGZxRt3sCPNpRIJRxThlLsHAEuCknUkirKbupCKCRhmuJSMB4xoPO9raiK6YVyQ0Lg1UPF3sWELcYeDDvDry6X00iLFOfiV0',
+              locale: 'auto',
+              token: (token: any) => {
+                console.log('Token:', token);
+                console.log(this.selectedSlot);
+                this.bookNow();
+              },
+            });
 
-           handler.open({
-             name: 'Demo Site',
-             description: '2 widgets',
-             amount: Number(amount) * 100,
-           });
+            handler.open({
+              name: 'Demo Site',
+              description: '2 widgets',
+              amount: Number(amount) * 100,
+            });
         }
      }, (err)=>{
         console.log("ccceee",err);
      })
-   
-     
-     
-
-   
+  
   }
 
   loadStripe() {
