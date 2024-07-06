@@ -119,6 +119,7 @@ export class PostComponent implements OnInit {
               (userId: any) => userId !== this.userId
             ); // Update the likes array
             this.postLiked[postId] = false; // Update the like status
+            this.notification.sendNotification("Your post has been unliked",post.user);
           }
         },
         (error) => {
