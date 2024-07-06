@@ -72,8 +72,9 @@ export class OtpComponent implements OnInit {
           console.log('Successfully Verified');
         },
         (error) => {
+          console.log(error);
           if(error.status == 400){
-             this._snakbar.open(error.error, 'Close', {
+             this._snakbar.open(error.error.error, 'Close', {
                duration: 3000,
                panelClass: ['snackbar-error'],
                verticalPosition: 'top',
