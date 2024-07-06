@@ -101,9 +101,9 @@ export class TrainerProfileComponent implements OnInit {
        return;
      }
      this._http.get(`${environment.apiUrl}/trainer/CheckSlotBooked/${this.selectedSlot._id}`).subscribe((data: any) => {
-       this.checkBoooking = data;
-       console.log("checkint",this.checkBoooking);
-         const slotUnAvailable = this.checkBoooking.find((slot) => slot._id === this.selectedSlot._id).status!=='booked';
+       this.checkBoooking = data.AvailableSlots;
+       console.log("check",this.checkBoooking);
+         const slotUnAvailable = this.checkBoooking.find((slot:any) => slot._id === this.selectedSlot._id).status!=='booked';
      console.log("slotUnAvailable",slotUnAvailable);
      }, (err)=>{
         console.log("ccceee",err);
