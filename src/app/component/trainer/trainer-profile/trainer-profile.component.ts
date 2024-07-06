@@ -19,6 +19,7 @@ export class TrainerProfileComponent implements OnInit {
   stripe!: Stripe | null;
   card: any;
   handler: any = null;
+  checkBoooking: any[] =[]
 
   constructor(
     private _http: HttpClient,
@@ -99,15 +100,11 @@ export class TrainerProfileComponent implements OnInit {
      if (!this.selectedSlot) {
        return;
      }
-     alert(this.selectedSlot)
-     if (this.isBooked(this.selectedSlot)) {
-         this._snackBar.open('This slot is already booked.', '', {
-           duration: 3000,
-           horizontalPosition: 'center',
-           verticalPosition: 'top',
-         });
-         return;
-      }
+     this._http.get(`${environment.apiUrl}/trainer/CheckSlotBooked/${this.selectedSlot._id}`).subscribe((data: any) => {
+       this.checkBoooking = data;
+       console.log(this.checkBoooking);
+     })
+     alert(this.checkBoooking)
 
     var handler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51PWGZxRt3sCPNpRIJRxThlLsHAEuCknUkirKbupCKCRhmuJSMB4xoPO9raiK6YVyQ0Lg1UPF3sWELcYeDDvDry6X00iLFOfiV0',
