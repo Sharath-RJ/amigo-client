@@ -104,7 +104,7 @@ export class TrainerProfileComponent implements OnInit {
        this.checkBoooking = data;
        console.log("cccccccccccccccccccccccccccc",this.checkBoooking);
      })
-     alert(this.checkBoooking)
+     
 
     var handler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51PWGZxRt3sCPNpRIJRxThlLsHAEuCknUkirKbupCKCRhmuJSMB4xoPO9raiK6YVyQ0Lg1UPF3sWELcYeDDvDry6X00iLFOfiV0',
