@@ -99,14 +99,23 @@ export class TrainerProfileComponent implements OnInit {
      if (!this.selectedSlot) {
        return;
      }
+     if (this.isBooked(this.selectedSlot)) {
+         this._snackBar.open('This slot is already booked.', '', {
+           duration: 3000,
+           horizontalPosition: 'center',
+           verticalPosition: 'top',
+         });
+         return;
+      }
+
     var handler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51PWGZxRt3sCPNpRIJRxThlLsHAEuCknUkirKbupCKCRhmuJSMB4xoPO9raiK6YVyQ0Lg1UPF3sWELcYeDDvDry6X00iLFOfiV0',
       locale: 'auto',
       token: (token: any) => {
-        // Use an arrow function to inherit 'this' context
+    
         console.log('Token:', token);
         console.log(this.selectedSlot);
-        this.bookNow(); // Now 'this' refers to the class instance
+        this.bookNow(); 
       },
     });
 
