@@ -72,6 +72,14 @@ export class OtpComponent implements OnInit {
           console.log('Successfully Verified');
         },
         (error) => {
+          if(error.status == 400){
+             this._snakbar.open(error.error, 'Close', {
+               duration: 3000,
+               panelClass: ['snackbar-error'],
+               verticalPosition: 'top',
+               horizontalPosition: 'center',
+             });
+          }
           console.error('OTP verification error', error);
         }
       );
