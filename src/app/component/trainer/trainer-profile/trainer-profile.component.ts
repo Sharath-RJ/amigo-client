@@ -103,6 +103,8 @@ export class TrainerProfileComponent implements OnInit {
      this._http.get(`${environment.apiUrl}/trainer/CheckSlotBooked/${this.selectedSlot._id}`).subscribe((data: any) => {
        this.checkBoooking = data;
        console.log("cccccccccccccccccccccccccccc",this.checkBoooking);
+     }, (err)=>{
+        console.log("ccceee",err);
      })
      
 
