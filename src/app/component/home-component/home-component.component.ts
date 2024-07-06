@@ -21,7 +21,8 @@ export class HomeComponentComponent implements OnInit  {
     const loggedInUser = sessionStorage.getItem('loginedInUser');
     if (loggedInUser) this.name = JSON.parse(loggedInUser).username;
 
-    this._http.get(`${environment.apiUrl}/notification/getNotificationCount`).subscribe((data) => {
+    this._http.get<any>(`${environment.apiUrl}/notification/getNotificationCount`).subscribe((data) => {
+      this.notificationCount = data;
       console.log(data);
     },(err)=>{
       console.log(err)
